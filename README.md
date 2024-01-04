@@ -25,6 +25,6 @@ Pembagian Tugas:
 
 - Nicholas - Angelfish, Redfish
 
-- Morel - Tuna, Barracuda
+- Morel - Tuna, Penyu Laut
 
 - Frangky - Paus Orca, Blue Whale, Background Latar
