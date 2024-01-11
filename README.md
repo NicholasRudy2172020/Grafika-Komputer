@@ -19,7 +19,7 @@ __
 
 Pembagian Tugas:
 
-- Bryan - Ikan Lentera, Sparidae
+- Bryan - Hiu Pari, Betta
 
 - William - Ikan Dori, Ikan Nemo (Ikan Giru / Clownfish)
 
