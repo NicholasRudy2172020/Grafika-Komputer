@@ -23,8 +23,8 @@ Pembagian Tugas:
 
 - William - Ikan Dori, Ikan Nemo (Ikan Giru / Clownfish)
 
-- Nicholas - Angelfish, Redfish
+- Nicholas - Angelfish, Redfish, Skybox, Water shader
 
 - Morel - Tuna, Penyu Laut
 
-- Frangky - Paus Orca, Blue Whale, Background Latar
+- Frangky - Paus Orca, Blue Whale
