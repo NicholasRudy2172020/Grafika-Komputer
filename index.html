@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Kehidupan Laut</title>
+        <style>
+            body{
+                margin: 0;
+                overflow: hidden;
+            }
+            #info-container {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                padding: 10px;
+                background-color: rgba(255, 255, 255, 0.8);
+                border-radius: 5px;
+                display: none;
+            }
+            
+        </style>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "./node_modules/three/build/three.module.js"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="info-container"></div>
+    <script type="module" src="index.js"></script>
+    <div id="infoOverlay" style="position: fixed; top: 100px; left: 10px; padding: 10px; background-color: rgba(255, 255, 255, 0.8); display: none;">
+        <h2 id="infoTitle"></h2>
+        <p id="infoContent"></p>
+        </div>
+        <div id="blueWhaleImage" style="position: fixed; top: 10px; right: 100px; display: none;">
+            <img src="./assets/paus biru.jpg" alt="Blue Whale" style="width: 400px;">
+        </div>
+        <!-- Div for killer whale image -->
+        <div id="killerWhaleImage" style="position: fixed; top: 300px; right: 100px; display: none; opacity: 1">
+            <img src="./assets/paus orca.jpg" alt="Killer Whale" style="width: 400px;">
+        </div>
+        <button id="hideInfoButton" style="position: fixed; bottom: 10px; left: 10px; padding: 5px; display: none;">Hide Info</button>
+</body>
+</html>
