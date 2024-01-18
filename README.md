@@ -27,4 +27,4 @@ Pembagian Tugas:
 
 - Morel - Tuna, Penyu Laut
 
-- Frangky - Paus Orca, Blue Whale
+- Frangky - Paus Orca, Blue Whale, Interaktif Information
