@@ -19,7 +19,7 @@ __
 
 Pembagian Tugas:
 
-- Bryan - Hiu Martil, Betta, Ikan Pari, Paus Sp***a
+- Bryan - Hiu Martil, Paus Bungkuk
 
 - William - Ikan Dori, Ikan Nemo (Ikan Giru / Clownfish)
 
