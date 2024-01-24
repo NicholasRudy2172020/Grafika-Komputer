@@ -663,7 +663,7 @@ function onMouseClick(event) {  // Sumber: https://discourse.threejs.org/t/zoom-
         // Show the information overlay
         const infoOverlay = document.getElementById('infoOverlay');
         infoOverlay.style.display = 'block';
-        
+
         // Show the blue whale image
         const blueWhaleImage = document.getElementById('blueWhaleImage');
         blueWhaleImage.style.display = 'block';
@@ -674,7 +674,36 @@ function onMouseClick(event) {  // Sumber: https://discourse.threejs.org/t/zoom-
 
         const hideInfoButton = document.getElementById('hideInfoButton');
         hideInfoButton.style.display = 'block';
-}
+
+        var shirohige;
+        var shirohigeLoader = new GLTFLoader();
+        shirohigeLoader.load('Model/blue_whale.glb', function (gltf) {
+            shirohige = gltf.scene;
+            shirohige.scale.set(0.0025, 0.0025, 0.0025);
+            shirohige.position.set(-2, 0, 0);
+            scene.add(shirohige);
+        });
+
+        var willy;
+        var willyLoader = new GLTFLoader();
+        willyLoader.load('Model/killer_whale.glb', function (gltf) {
+            willy = gltf.scene;
+            willy.scale.set(0.0025, 0.0025, 0.0025);
+            willy.position.set(-2, -1, 1);
+            scene.add(willy);
+        });
+
+        hideInfoButton.addEventListener('click', hideInfo);
+
+        function hideInfo() {
+            if (shirohige) {
+                scene.remove(shirohige);
+            }
+            if (willy) {
+                scene.remove(willy);
+            }
+        }
+    }
 }
 
 function onMouseClick2(event) {
@@ -711,16 +740,45 @@ function onMouseClick2(event) {
         const infoOverlay = document.getElementById('infoOverlay');
         infoOverlay.style.display = 'block';
 
-         // Show the angel fish image
-         const angelfishImage = document.getElementById('angelfishImage');
-         angelfishImage.style.display = 'block';
- 
-         // Show the redfish image
-         const redfishImage = document.getElementById('redfishImage');
-         redfishImage.style.display = 'block';
+        // Show the angel fish image
+        const angelfishImage = document.getElementById('angelfishImage');
+        angelfishImage.style.display = 'block';
+
+        // Show the redfish image
+        const redfishImage = document.getElementById('redfishImage');
+        redfishImage.style.display = 'block';
 
         const hideInfoButton = document.getElementById('hideInfoButton');
         hideInfoButton.style.display = 'block';
+
+        var ikanindah;
+        var ikanindahLoader = new GLTFLoader();
+        ikanindahLoader.load('Model/emperor_angelfish.glb', function (gltf) {
+            ikanindah = gltf.scene;
+            ikanindah.scale.set(2, 2, 2);
+            ikanindah.position.set(-2, 0, 0);
+            scene.add(ikanindah);
+        });
+
+        var ikanmerah;
+        var ikanmerahLoader = new GLTFLoader();
+        ikanmerahLoader.load('Model/redfish.glb', function (gltf) {
+            ikanmerah = gltf.scene;
+            ikanmerah.scale.set(0.0025, 0.0025, 0.0025);
+            ikanmerah.position.set(-2, -1, 0);
+            scene.add(ikanmerah);
+        });
+
+        hideInfoButton.addEventListener('click', hideInfo);
+
+        function hideInfo() {
+            if (ikanindah) {
+                scene.remove(ikanindah);
+            }
+            if (ikanmerah) {
+                scene.remove(ikanmerah);
+            }
+        }
     }
 }
 
@@ -761,16 +819,46 @@ function onMouseClick3(event) {
         const infoOverlay = document.getElementById('infoOverlay');
         infoOverlay.style.display = 'block';
 
-         // Show the sperm whale image
-         const spermWhaleImage = document.getElementById('spermWhaleImage');
-         spermWhaleImage.style.display = 'block';
- 
-         // Show the stingray image
-         const stingrayfishImage = document.getElementById('stingrayfishImage');
-         stingrayfishImage.style.display = 'block';
+        // Show the sperm whale image
+        const spermWhaleImage = document.getElementById('spermWhaleImage');
+        spermWhaleImage.style.display = 'block';
+
+        // Show the stingray image
+        const stingrayfishImage = document.getElementById('stingrayfishImage');
+        stingrayfishImage.style.display = 'block';
+
+        var PausSperma;
+        var PausSpermaLoader = new GLTFLoader();
+        PausSpermaLoader.load('Model/sperm_whale.glb', function (gltf) {
+            PausSperma = gltf.scene;
+            PausSperma.scale.set(0.0025, 0.0025, 0.0025);
+            PausSperma.position.set(-2, 0, 0);
+            scene.add(PausSperma);
+        });
+
+        var Pari2;
+        var Pari2Loader = new GLTFLoader();
+        Pari2Loader.load('Model/stingray.glb', function (gltf) {
+            Pari2 = gltf.scene;
+            Pari2.scale.set(0.0025, 0.0025, 0.0025);
+            Pari2.position.set(-2, -1, 0);
+            scene.add(Pari2);
+        });
 
         const hideInfoButton = document.getElementById('hideInfoButton');
         hideInfoButton.style.display = 'block';
+
+        hideInfoButton.addEventListener('click', hideInfo);
+
+        function hideInfo() {
+            if (PausSperma) {
+                scene.remove(PausSperma);
+            }
+            if (Pari2) {
+                scene.remove(Pari2);
+            }
+        }
+
     }
 }
 
@@ -822,8 +910,38 @@ function onMouseClick4(event) {
         const tunaImage = document.getElementById('tunaImage');
         tunaImage.style.display = 'block';
 
+        var Penyu;
+        var PenyuLoader = new GLTFLoader();
+        PenyuLoader.load('Model/juvenile_turtle.glb', function (gltf) {
+            Penyu = gltf.scene;
+            Penyu.scale.set(0.5, 0.5, 0.5);
+            Penyu.position.set(-2, 0, 0);
+            scene.add(Penyu);
+        });
+
+        var TunaYellow;
+        var TunaYellowLoader = new GLTFLoader();
+        TunaYellowLoader.load('Model/tuna_fish.glb', function (gltf) {
+            TunaYellow = gltf.scene;
+            TunaYellow.scale.set(0.5, 0.5, 0.5);
+            TunaYellow.position.set(-2, -1, 0);
+            scene.add(TunaYellow);
+        });
+
         const hideInfoButton = document.getElementById('hideInfoButton');
         hideInfoButton.style.display = 'block';
+
+        hideInfoButton.addEventListener('click', hideInfo);
+
+        function hideInfo() {
+            if (Penyu) {
+                scene.remove(Penyu);
+            }
+            if (TunaYellow) {
+                scene.remove(TunaYellow);
+            }
+        }
+
     }
 }
 
@@ -875,8 +993,38 @@ function onMouseClick5(event) {
         const doryImage = document.getElementById('doryImage');
         doryImage.style.display = 'block';
 
+        var BlueTang;
+        var BlueTangLoader = new GLTFLoader();
+        BlueTangLoader.load('Model/dory.glb', function (gltf) {
+            BlueTang = gltf.scene;
+            BlueTang.scale.set(0.1, 0.1, 0.1);
+            BlueTang.position.set(-2, -1, 0);
+            scene.add(BlueTang);
+        });
+
+        var Marlin;
+        var MarlinLoader = new GLTFLoader();
+        MarlinLoader.load('Model/clownfish.glb', function (gltf) {
+            Marlin = gltf.scene;
+            Marlin.scale.set(0.1, 0.1, 0.1);
+            Marlin.position.set(-2, -0.5, 0);
+            scene.add(Marlin);
+        });
+
         const hideInfoButton = document.getElementById('hideInfoButton');
         hideInfoButton.style.display = 'block';
+
+
+        hideInfoButton.addEventListener('click', hideInfo);
+
+        function hideInfo() {
+            if (BlueTang) {
+                scene.remove(BlueTang);
+            }
+            if (Marlin) {
+                scene.remove(Marlin);
+            }
+        }
     }
 }
 
