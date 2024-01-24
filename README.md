@@ -19,7 +19,7 @@ __
 
 Pembagian Tugas:
 
-- Bryan - Hiu Martil, Paus Bungkuk
+- Bryan - Sperm Whale, Stingray
 
 - William - Ikan Dori, Ikan Nemo (Ikan Giru / Clownfish)
 
@@ -27,4 +27,5 @@ Pembagian Tugas:
 
 - Morel - Tuna, Penyu Laut
 
-- Frangky - Paus Orca, Blue Whale, Interaktif Information
+- Frangky - Paus Orca, Blue Whale, Interaktif Information, Penggabungan semua ikan
+  
