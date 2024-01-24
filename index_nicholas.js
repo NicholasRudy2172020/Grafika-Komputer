@@ -649,12 +649,13 @@ function onMouseClick(event) {  // Sumber: https://discourse.threejs.org/t/zoom-
             - Nama ilmiah: Balaenoptera musculus<br>
             - Habitat: Semua lautan<br>
             - Makanan: 'Krill' makhluk kecil mirip udang, copepoda, plankton<br>
-            - Populasi: Kepadatan global populasi paus biru diperkirakan 10.000-25.000 paus biru, sekitar 3-11 persen dari<br>
-              perkiraan ukuran populasi pada tahun 1911.<br><br>
+            - Populasi: Kepadatan global populasi paus biru diperkirakan 10.000-25.000 paus biru,<br>
+              sekitar 3-11 persen dari perkiraan ukuran populasi pada tahun 1911.<br><br>
             <strong>2. Killer Whale:</strong><br>
             - Puncak predator dalam lautan<br>
             - Nama Latin: Orcinus Orca<br>
-            - Memiliki kulit berwarna hitam dengan bagian bawah berwarna putih dan bercak putih di dekat setiap mata<br>
+            - Memiliki kulit berwarna hitam dengan bagian bawah berwarna putih dan <br>
+              bercak putih di dekat setiap mata<br>
             - Makanan: ikan, anjing laut, hiu putih, spesies lumba lumba, anak paus balin, bahkan paus dewasa<br>
             - Habitat: Semua lautan dunia ( kutub di Arktik dan Antartika, Laut Baltik, Laut Hitam,<br>
               Samudera Arktik
@@ -680,7 +681,7 @@ function onMouseClick(event) {  // Sumber: https://discourse.threejs.org/t/zoom-
         shirohigeLoader.load('Model/blue_whale.glb', function (gltf) {
             shirohige = gltf.scene;
             shirohige.scale.set(0.0025, 0.0025, 0.0025);
-            shirohige.position.set(-2, 0, 0);
+            shirohige.position.set(0, 0, 0);
             scene.add(shirohige);
         });
 
@@ -689,7 +690,7 @@ function onMouseClick(event) {  // Sumber: https://discourse.threejs.org/t/zoom-
         willyLoader.load('Model/killer_whale.glb', function (gltf) {
             willy = gltf.scene;
             willy.scale.set(0.0025, 0.0025, 0.0025);
-            willy.position.set(-2, -1, 1);
+            willy.position.set(0, -1, 1);
             scene.add(willy);
         });
 
@@ -756,7 +757,7 @@ function onMouseClick2(event) {
         ikanindahLoader.load('Model/emperor_angelfish.glb', function (gltf) {
             ikanindah = gltf.scene;
             ikanindah.scale.set(2, 2, 2);
-            ikanindah.position.set(-2, 0, 0);
+            ikanindah.position.set(0, 0, 0);
             scene.add(ikanindah);
         });
 
@@ -765,7 +766,7 @@ function onMouseClick2(event) {
         ikanmerahLoader.load('Model/redfish.glb', function (gltf) {
             ikanmerah = gltf.scene;
             ikanmerah.scale.set(0.0025, 0.0025, 0.0025);
-            ikanmerah.position.set(-2, -1, 0);
+            ikanmerah.position.set(0, -1, 0);
             scene.add(ikanmerah);
         });
 
@@ -803,8 +804,10 @@ function onMouseClick3(event) {
             <strong>1. Spermwhale:</strong><br> 
             - hewan terbesar dalam kelompok paus bergigi sekaligus hewan bergigi terbesar di dunia.<br>
             - Nama ilmiah: Physeter macrocephalus<br>
-            - Habitat: Sebenarnya merata di hampir seluruh dunia. Mereka terdistribusi mulai dari laut tropis, subtropis, <br>
-            hingga lautan sub kutub dari kedua belahan bumi. Perairan dengan kedalaman lebih dari 1.000 m adalah habitat asli paus ini.<br>
+            - Habitat: Sebenarnya merata di hampir seluruh dunia. <br>
+              Mereka terdistribusi mulai dari laut tropis, subtropis, <br>
+              hingga lautan sub kutub dari kedua belahan bumi. <br>
+              Perairan dengan kedalaman lebih dari 1.000 m adalah habitat asli paus ini.<br>
             - Makanan: Sotong, cumi-cumi, hiu, udang, ikan<br>
             - Ukuran: Dapat tumbuh hingga sepanjang 16 meter dengan bobot 41.000 kg.<br><br>
             <strong>2. Stingray:</strong><br>
@@ -814,7 +817,7 @@ function onMouseClick3(event) {
             - Habitat: Ditemukan di perairan laut pesisir tropis dan subtropis di seluruh dunia.<br>
             - Makanan: Udang, ikan kecil, cacing, kerang, krustaseam dan invertebrata laut lainnya <br>
             - Populasi : 31 Spesies sejak 2021 turun sebesar 71,1% sejak tahun 1970<br>         
-            - Ukuran: memiliki ukuran panjang lebih dari 190 sentimeter dengan berat mencapai lebih dari 350 kilogram.<br>
+            - Ukuran: memiliki ukuran panjang lebih dari 190 cm dengan berat mencapai lebih dari 350 kg.<br>
         `;
         const infoOverlay = document.getElementById('infoOverlay');
         infoOverlay.style.display = 'block';
@@ -831,8 +834,8 @@ function onMouseClick3(event) {
         var PausSpermaLoader = new GLTFLoader();
         PausSpermaLoader.load('Model/sperm_whale.glb', function (gltf) {
             PausSperma = gltf.scene;
-            PausSperma.scale.set(0.0025, 0.0025, 0.0025);
-            PausSperma.position.set(-2, 0, 0);
+            PausSperma.scale.set(0.002125, 0.002125, 0.002125);
+            PausSperma.position.set(0, 0, -0.125);
             scene.add(PausSperma);
         });
 
@@ -841,7 +844,7 @@ function onMouseClick3(event) {
         Pari2Loader.load('Model/stingray.glb', function (gltf) {
             Pari2 = gltf.scene;
             Pari2.scale.set(0.0025, 0.0025, 0.0025);
-            Pari2.position.set(-2, -1, 0);
+            Pari2.position.set(0, -1, 0.625);
             scene.add(Pari2);
         });
 
@@ -915,7 +918,7 @@ function onMouseClick4(event) {
         PenyuLoader.load('Model/juvenile_turtle.glb', function (gltf) {
             Penyu = gltf.scene;
             Penyu.scale.set(0.5, 0.5, 0.5);
-            Penyu.position.set(-2, 0, 0);
+            Penyu.position.set(0, 0, 0);
             scene.add(Penyu);
         });
 
@@ -924,7 +927,7 @@ function onMouseClick4(event) {
         TunaYellowLoader.load('Model/tuna_fish.glb', function (gltf) {
             TunaYellow = gltf.scene;
             TunaYellow.scale.set(0.5, 0.5, 0.5);
-            TunaYellow.position.set(-2, -1, 0);
+            TunaYellow.position.set(0, -1, 0);
             scene.add(TunaYellow);
         });
 
@@ -967,17 +970,20 @@ function onMouseClick5(event) {
             - Lebih dikenal dengan sebutan ikan badut<br>
             - Nama ilmiah: Amphiprioninae<br>
             - Di alam bebas mereka bersimbiosis dengan anemon laut..<br>
-            - Masa hidup = Ikan badut hidup sekitar 8 tahun di alam liar dan 12 tahun atau lebih di lingkungan yang dilindungi.<br>
-            - Habitat: merupakan ikan karang tropis yang hidup di perairan hangat pada daerah terumbu dengan kedalaman<br>
-              kurang dari 50 meter dan berair jernih.<br>
+            - Masa hidup = Ikan badut hidup sekitar 8 tahun di alam liar<br>
+              dan 12 tahun atau lebih di lingkungan yang dilindungi.<br>
+            - Habitat: merupakan ikan karang tropis yang hidup di perairan hangat<br>
+              pada daerah terumbu dengan kedalaman kurang dari 50 meter dan berair jernih.<br>
             - Makanan: Omnivore (pemakan hewan dan tumbuhan<br>
             - Ukuran: 3 – 4 inci (10 cm).<br><br>
             <strong>2. Ikan Dori:</strong><br>
             - Nama ilmiah: Zeus faber<br>
             - Bisa berubah warna sesuai dengan keadaan<br>
             - Masa hidup = Masa hidup mereka mencapai sekitar 12 tahun di alam liar<br>
-            - Habitat: tinggal di dekat dasar laut, hidup di kedalaman 5 hingga 360 meter (16 hingga 1.200 ft). Mereka biasanya menyendiri.<br>
-            - Makanan: Selain hidup di karang ikan blue tang juga memanfaatkan ganggang disekitarnya untuk makanan sehari-hari mereka.<br>
+            - Habitat: tinggal di dekat dasar laut, <br>
+              hidup di kedalaman 5 hingga 360 meter (16 hingga 1.200 ft). Mereka biasanya menyendiri.<br>
+            - Makanan: Selain hidup di karang ikan blue tang juga memanfaatkan<br>
+              ganggang disekitarnya untuk makanan sehari-hari mereka.<br>
               Ikan kecil ini tidak memakan plankton atau ikan kecil lainnya<br>
             - Ukuran: tumbuh hingga ukuran maksimum 65 cm (2 kaki) dan 5 kilogram (12 lb) beratnya.<br>
               Ia mempunyai 10 duri panjang pada sirip punggungnya dan 4 duri pada sirip duburnya.<br>
@@ -998,7 +1004,7 @@ function onMouseClick5(event) {
         BlueTangLoader.load('Model/dory.glb', function (gltf) {
             BlueTang = gltf.scene;
             BlueTang.scale.set(0.1, 0.1, 0.1);
-            BlueTang.position.set(-2, -1, 0);
+            BlueTang.position.set(0, -1, 0);
             scene.add(BlueTang);
         });
 
@@ -1007,7 +1013,7 @@ function onMouseClick5(event) {
         MarlinLoader.load('Model/clownfish.glb', function (gltf) {
             Marlin = gltf.scene;
             Marlin.scale.set(0.1, 0.1, 0.1);
-            Marlin.position.set(-2, -0.5, 0);
+            Marlin.position.set(0, -0.5, 0.5);
             scene.add(Marlin);
         });
 
