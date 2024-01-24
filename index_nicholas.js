@@ -234,6 +234,7 @@ function createFish(loader, modelPath, initialPosition, scale = 1) {
     return result;
 }
 
+// Referensi: https://threejs.org/docs/#api/en/core/Object3D.position
 const fish1 = createFish(loader, 'Model/emperor_angelfish.glb', new THREE.Vector3(-2, 0, 6), 1);
 const fish2 = createFish(loader, 'Model/emperor_angelfish.glb', new THREE.Vector3(0, -1, 1), 1);
 const fish3 = createFish(loader, 'Model/emperor_angelfish.glb', new THREE.Vector3(-5, -2, 1), 1);
