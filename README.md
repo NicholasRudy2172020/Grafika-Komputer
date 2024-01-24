@@ -19,7 +19,7 @@ __
 
 Pembagian Tugas:
 
-- Bryan - Sperm Whale, Stingray
+- Bryan - Sperm Whale, Stingray, Terumbu Karang
 
 - William - Ikan Dori, Ikan Nemo (Ikan Giru / Clownfish)
 
