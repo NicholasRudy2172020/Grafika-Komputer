@@ -25,7 +25,7 @@ Pembagian Tugas:
 
 - Nicholas - Angelfish, Redfish, Skybox, Water shader
 
-- Morel - Tuna, Penyu Laut
+- Morel - Tuna, Penyu Laut , Update Interaktif Informasi agar gambar -> GLB
 
 - Frangky - Paus Orca, Blue Whale, Interaktif Information, Penggabungan semua ikan
   
