@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import { OrbitControls } from './node_modules/three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from './node_modules/three/examples/jsm/loaders/GLTFLoader.js';
 import { Water } from './node_modules/three/examples/jsm/objects/Water2.js';
+import gsap from './node_modules/gsap/gsap-core.js';
 import { PointerLockControls } from './node_modules/three/examples/jsm/controls/PointerLockControls.js';
 
 const scene = new THREE.Scene();
@@ -234,54 +235,277 @@ function createFish(loader, modelPath, initialPosition, scale = 1) {
     return result;
 }
 
+//zoom
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+let clickedCoordinates = new THREE.Vector3();
+let isZoomedIn = false;
+
+function onClick(event) {
+    //referensi kode = https://discourse.threejs.org/t/zoom-into-object-and-open-popup-on-click/40337 pada 16.12 tanggal 24/01/2024
+    event.preventDefault();
+
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, cam);
+
+    //referensi kode = chatgpt pada 16.12 tanggal 24/01/2024
+    const allFishModels = [
+        ...angelfishes.map(fish => fish.model),
+        ...angelfishes2.map(fish => fish.model),
+        ...redfishes.map(fish => fish.model),
+        ...bluewhale.map(fish => fish.model),
+        ...killerwhale.map(fish => fish.model),
+        ...spermwhalefish.map(fish => fish.model),
+        ...stingrayfish.map(fish => fish.model),
+        ...turtle.map(fish => fish.model),
+        ...tunafish.map(fish => fish.model),
+        ...clownfish.map(fish => fish.model),
+        ...doryfish.map(fish => fish.model),
+    ];
+
+    const intersects = raycaster.intersectObjects(allFishModels, true);
+
+    if (intersects.length > 0) {
+        var object = intersects[0].object;
+
+        clickedCoordinates.copy(intersects[0].point);
+
+        if (isZoomedIn) {
+            MovingFish();
+            resetCamera();
+        } else {
+            zoomToObject(object);
+            stopFishMovement();
+        }
+    } 
+}
+
+function resetCamera() {
+    //referensi kode = chatgpt pada 16.12 tanggal 24/01/2024
+    let tl = gsap.timeline({
+        defaults: {
+            duration: 1,
+            ease: "expo.out",
+            onUpdate: function () {
+                orbitControls.enabled = false;
+            },
+            onComplete: function () {
+                orbitControls.enabled = true;
+                isZoomedIn = false;
+            },
+        },
+    });
+
+    tl.to(orbitControls.target, { x: 0, y: 0, z: 0 }).to(
+        cam.position,
+        { x: 0, y: -2, z: 5 },
+        0
+    );
+}
+
+document.addEventListener('click', onClick);
+
+//referensi kode = https://discourse.threejs.org/t/zoom-into-object-and-open-popup-on-click/40337 pada 16.12 tanggal 24/01/2024
+function zoomToObject(object) {
+
+    let tl = gsap.timeline({
+        defaults: {
+            duration: 1,
+            ease: "expo.out",
+            onUpdate: function () {
+                orbitControls.enabled = false;
+            },
+            onComplete: function () {
+                orbitControls.enabled = true;
+            },
+        },
+    });
+
+    tl.to(orbitControls.target, { x: clickedCoordinates.x, y: clickedCoordinates.y, z: clickedCoordinates.z }).to(
+        cam.position,
+        { x: clickedCoordinates.x+1, y: clickedCoordinates.y+1, z: clickedCoordinates.z-3},
+        0
+    );
+
+    isZoomedIn = true;
+}
+
+function stopFishMovement() {
+    angelfishes.forEach(fish => {
+        fish.isMoving = false; 
+    });
+
+    angelfishes2.forEach(fish => {
+        fish.isMoving = false;
+    });
+
+    redfishes.forEach(fish => {
+        fish.isMoving = false; 
+    });
+
+    bluewhale.forEach(fish => {
+        fish.isMoving = false; 
+    });
+
+    killerwhale.forEach(fish => {
+        fish.isMoving = false;
+    });
+
+    spermwhalefish.forEach(fish => {
+        fish.isMoving = false; 
+    });
+
+    stingrayfish.forEach(fish => {
+        fish.isMoving = false; 
+    });
+
+    turtle.forEach(fish => {
+        fish.isMoving = false;
+    });
+
+    tunafish.forEach(fish => {
+        fish.isMoving = false; 
+    });
+
+    clownfish.forEach(fish => {
+        fish.isMoving = false; 
+    });
+
+    doryfish.forEach(fish => {
+        fish.isMoving = false; 
+    });
+
+}
+
+function MovingFish() {
+    angelfishes.forEach(fish => {
+        fish.isMoving = true; 
+    });
+
+    angelfishes2.forEach(fish => {
+        fish.isMoving = true;
+    });
+
+    redfishes.forEach(fish => {
+        fish.isMoving = true; 
+    });
+
+    bluewhale.forEach(fish => {
+        fish.isMoving = true; 
+    });
+
+    killerwhale.forEach(fish => {
+        fish.isMoving = true;
+    });
+
+    spermwhalefish.forEach(fish => {
+        fish.isMoving = true; 
+    });
+
+    stingrayfish.forEach(fish => {
+        fish.isMoving = true; 
+    });
+
+    turtle.forEach(fish => {
+        fish.isMoving = true;
+    });
+
+    tunafish.forEach(fish => {
+        fish.isMoving = true; 
+    });
+
+    clownfish.forEach(fish => {
+        fish.isMoving = true; 
+    });
+
+    doryfish.forEach(fish => {
+        fish.isMoving = true; 
+    });
+};
+
 // Referensi: https://threejs.org/docs/#api/en/core/Object3D.position
 const fish1 = createFish(loader, 'Model/emperor_angelfish.glb', new THREE.Vector3(-2, 0, 6), 1);
+fish1.isMoving = true;
 const fish2 = createFish(loader, 'Model/emperor_angelfish.glb', new THREE.Vector3(0, -1, 1), 1);
+fish2.isMoving = true;
 const fish3 = createFish(loader, 'Model/emperor_angelfish.glb', new THREE.Vector3(-5, -2, 1), 1);
+fish3.isMoving = true;
 
 const fish31 = createFish(loader, 'Model/emperor_angelfish.glb', new THREE.Vector3(-1, -2, 10), 1);
+fish31.isMoving = true;
 const fish32 = createFish(loader, 'Model/emperor_angelfish.glb', new THREE.Vector3(-2, -1, 10), 1);
+fish32.isMoving = true;
 const fish33 = createFish(loader, 'Model/emperor_angelfish.glb', new THREE.Vector3(-4, -2, 12), 1);
+fish33.isMoving = true;
 
 const fish7 = createFish(loader, 'Model/redfish.glb', new THREE.Vector3(0, -1, 9), 0.002);
+fish7.isMoving = true;
 const fish8 = createFish(loader, 'Model/redfish.glb', new THREE.Vector3(2, -2, 8), 0.002);
+fish8.isMoving = true;
 const fish9 = createFish(loader, 'Model/redfish.glb', new THREE.Vector3(6, -2, 10), 0.002);
+fish9.isMoving = true;
 
 const fish13 = createFish(loader, 'Model/blue_whale.glb', new THREE.Vector3(-11, -7, -10), 0.001);
+fish13.isMoving = true;
 const fish14 = createFish(loader, 'Model/blue_whale.glb', new THREE.Vector3(5, -10, -10), 0.001);
+fish14.isMoving = true;
 const fish15 = createFish(loader, 'Model/blue_whale.glb', new THREE.Vector3(-2, -15, -15), 0.001);
+fish15.isMoving = true;
+
 // const fish16 = createFish(loader, 'Model/blue_whale.glb', new THREE.Vector3(-25, 10, 13), 0.001);
 // const fish17= createFish(loader, 'Model/blue_whale.glb', new THREE.Vector3(30, -15, 20), 0.001);
 // const fish18 = createFish(loader, 'Model/blue_whale.glb', new THREE.Vector3(15, -10, 10), 0.001);
 
 const fish16 = createFish(loader, 'Model/killer_whale.glb', new THREE.Vector3(-11, -3, -12), 0.001);
+fish16.isMoving = true;
 const fish17 = createFish(loader, 'Model/killer_whale.glb', new THREE.Vector3(5, -2, -10), 0.001);
+fish17.isMoving = true;
 const fish18 = createFish(loader, 'Model/killer_whale.glb', new THREE.Vector3(-2, -1, -12), 0.001);
+fish18.isMoving = true;
 
 const fish19 = createFish(loader, 'Model/sperm_whale.glb', new THREE.Vector3(-13, -1, -7), 0.001);
+fish19.isMoving = true;
 const fish20 = createFish(loader, 'Model/sperm_whale.glb', new THREE.Vector3(9, -2, -9), 0.001);
+fish20.isMoving = true;
 // const fish21 = createFish(loader, 'Model/sperm_whale.glb', new THREE.Vector3(-3, -2, -11), 0.001);
 
 const fish22 = createFish(loader, 'Model/stingray.glb', new THREE.Vector3(3, 0, 12), 0.003);
+fish22.isMoving = true;
 const fish23 = createFish(loader, 'Model/stingray.glb', new THREE.Vector3(1, -3, 12), 0.003);
+fish23.isMoving = true;
 const fish24 = createFish(loader, 'Model/stingray.glb', new THREE.Vector3(10, -1, 12), 0.003);
+fish24.isMoving = true;
 
 const fish25 = createFish(loader, 'Model/juvenile_turtle.glb', new THREE.Vector3(-3, -2, 13), 0.001);
+fish25.isMoving = true;
 const fish26 = createFish(loader, 'Model/juvenile_turtle.glb', new THREE.Vector3(-7, -1, 12), 0.001);
+fish26.isMoving = true;
 const fish27 = createFish(loader, 'Model/juvenile_turtle.glb', new THREE.Vector3(-10, -3, 12), 0.001);
+fish27.isMoving = true;
 
 const fish28 = createFish(loader, 'Model/tuna_fish.glb', new THREE.Vector3(0, 0, 13), 0.001);
+fish28.isMoving = true;
 const fish29 = createFish(loader, 'Model/tuna_fish.glb', new THREE.Vector3(-1, -3, 13), 0.001);
+fish29.isMoving = true;
 const fish30 = createFish(loader, 'Model/tuna_fish.glb', new THREE.Vector3(-4, -1, 13), 0.001);
+fish30.isMoving = true;
 
 const fish34 = createFish(loader, 'Model/clownfish.glb', new THREE.Vector3(1, 0, 13), 0.001);
+fish34.isMoving = true;
 const fish35 = createFish(loader, 'Model/clownfish.glb', new THREE.Vector3(-5, -2, 12), 0.001);
+fish35.isMoving = true;
 const fish36 = createFish(loader, 'Model/clownfish.glb', new THREE.Vector3(6, 0, 12), 0.001);
+fish36.isMoving = true;
 
 const fish37 = createFish(loader, 'Model/dory.glb', new THREE.Vector3(12, 0, 13), 0.001);
+fish37.isMoving = true;
 const fish38 = createFish(loader, 'Model/dory.glb', new THREE.Vector3(9, -2, 12), 0.001);
+fish38.isMoving = true;
 const fish39 = createFish(loader, 'Model/dory.glb', new THREE.Vector3(13, -3, 12), 0.001);
-
+fish39.isMoving = true;
 
 const angelfishes = [fish1, fish2, fish3];
 scene.add(angelfishes)
@@ -712,8 +936,8 @@ document.getElementById('hideInfoButton').addEventListener('click', function() {
   function draw(){
     requestAnimationFrame(draw);
     angelfishes.forEach(fish => {
-        if (fish.mixer) {
-            fish.mixer.update(0.025);
+        fish.mixer.update(0.025);
+        if (fish.isMoving && fish.model && fish.mixer) {
             fish.model.position.x -= 0.005;
             fish.model.position.z = 7;
             fish.model.rotation.y = 10;
@@ -724,9 +948,9 @@ document.getElementById('hideInfoButton').addEventListener('click', function() {
     });
 
     angelfishes2.forEach(fish => {
-        fish.model.rotation.y = 1.5
-        if (fish.mixer) {
-            fish.mixer.update(0.025);
+        // fish.model.rotation.y = 1.5
+        fish.mixer.update(0.025);
+        if (fish.isMoving && fish.model && fish.mixer) {
             fish.model.position.x += 0.005;
             fish.model.position.z = 10;
             fish.model.rotation.y = 0;
@@ -738,8 +962,8 @@ document.getElementById('hideInfoButton').addEventListener('click', function() {
     
     redfishes.forEach(fish => {
         fish.model.rotation.y = 1.5
-        if (fish.mixer) {
-            fish.mixer.update(0.025);
+        fish.mixer.update(0.025);
+        if (fish.isMoving && fish.model && fish.mixer) {
             fish.model.position.x += 0.005;
             if (fish.model.position.x > 20) {
                 fish.model.position.x -= 50;
@@ -749,8 +973,8 @@ document.getElementById('hideInfoButton').addEventListener('click', function() {
 
     bluewhale.forEach(fish => {
         fish.model.rotation.y = 1.5
-        if (fish.mixer) {
-            fish.mixer.update(0.025);
+        fish.mixer.update(0.025);
+        if (fish.isMoving && fish.model && fish.mixer) {
             fish.model.position.x += 0.005;
             fish.model.rotation.y = Math.PI * 0.5;
             fish.model.position.y = -5;
@@ -763,8 +987,8 @@ document.getElementById('hideInfoButton').addEventListener('click', function() {
 
     killerwhale.forEach(fish => {
         fish.model.rotation.y = 1.5
-        if (fish.mixer) {
-            fish.mixer.update(0.025);
+        fish.mixer.update(0.025);
+        if (fish.isMoving && fish.model && fish.mixer) {
             fish.model.position.x += 0.005;
             fish.model.scale.set(0.005, 0.005, 0.005);
             if (fish.model.position.x > 20) {
@@ -775,8 +999,8 @@ document.getElementById('hideInfoButton').addEventListener('click', function() {
 
     spermwhalefish.forEach(fish => {
         fish.model.rotation.y = 1.5
-        if (fish.mixer) {
-            fish.mixer.update(0.005);
+        fish.mixer.update(0.005);
+        if (fish.isMoving && fish.model && fish.mixer) {
             fish.model.position.x += 0.005;
             fish.model.scale.set(0.005, 0.005, 0.005);
             if (fish.model.position.x > 20) {
@@ -787,8 +1011,8 @@ document.getElementById('hideInfoButton').addEventListener('click', function() {
 
     stingrayfish.forEach(fish => {
         fish.model.rotation.y = 1.5
-        if (fish.mixer) {
-            fish.mixer.update(0.005);
+        fish.mixer.update(0.005);
+        if (fish.isMoving && fish.model && fish.mixer) {
             fish.model.position.x += 0.007;
             if (fish.model.position.x > 20) {
                 fish.model.position.x -= 50;
@@ -797,9 +1021,9 @@ document.getElementById('hideInfoButton').addEventListener('click', function() {
     });
 
     turtle.forEach(fish => {
-        fish.model.rotation.y = 1.5
-        if (fish.mixer) {
-            fish.mixer.update(0.025);
+        // fish.model.rotation.y = 1.5
+        fish.mixer.update(0.025);
+        if (fish.isMoving && fish.model && fish.mixer) {
             fish.model.position.x -= 0.005;
             fish.model.position.z = 10;
             fish.model.rotation.y = 10.8;
@@ -811,9 +1035,9 @@ document.getElementById('hideInfoButton').addEventListener('click', function() {
     });
 
     tunafish.forEach(fish => {
-        fish.model.rotation.y = 1.5
-        if (fish.mixer) {
-            fish.mixer.update(0.025);
+        // fish.model.rotation.y = 1.5
+        fish.mixer.update(0.025);
+        if (fish.isMoving && fish.model && fish.mixer) {
             fish.model.position.x -= 0.005;
             fish.model.position.z = 10;
             fish.model.rotation.y = 10.8;
@@ -825,9 +1049,9 @@ document.getElementById('hideInfoButton').addEventListener('click', function() {
     });
 
     clownfish.forEach(fish => {
-        fish.model.rotation.y = 1.5
-        if (fish.mixer) {
-            fish.mixer.update(0.05);
+        // fish.model.rotation.y = 1.5
+        fish.mixer.update(0.025);
+        if (fish.isMoving && fish.model && fish.mixer) {
             fish.model.position.x += 0.005;
             fish.model.rotation.y = -2.5;
             fish.model.scale.set(0.05, 0.05, 0.05);
@@ -838,8 +1062,8 @@ document.getElementById('hideInfoButton').addEventListener('click', function() {
     });
 
     doryfish.forEach(fish => {
-        if (fish.mixer) {
-            fish.mixer.update(0.025);
+        fish.mixer.update(0.025);
+        if (fish.isMoving && fish.model && fish.mixer) {
             fish.model.position.x -= 0.005;
             fish.model.position.z = 10;
             fish.model.rotation.y = 10.8;
