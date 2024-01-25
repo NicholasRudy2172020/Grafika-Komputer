@@ -21,9 +21,9 @@ Pembagian Tugas:
 
 - Bryan - Sperm Whale, Stingray, Terumbu Karang
 
-- William - Ikan Dori, Ikan Nemo (Ikan Giru / Clownfish)
+- William - Ikan Dori, Ikan Nemo (Ikan Giru / Clownfish), Click to Zoom function
 
-- Nicholas - Angelfish, Redfish, Skybox, Water shader
+- Nicholas - Angelfish, Redfish, Skybox, Water2 shader, Submarine Aquarium, CreateFish() function
 
 - Morel - Tuna, Penyu Laut , Update Interaktif Informasi agar gambar -> GLB
 
