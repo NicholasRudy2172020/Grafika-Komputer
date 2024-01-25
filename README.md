@@ -1,6 +1,10 @@
 # Grafika-Komputer
 Tugas Besar Grafika Komputer Semester 5 - Kelompok 3
 
+Small Requirement: GSAP
+
+Modified Water2 object can be found on the Prototype-2172020 branch at node_modules/three/examples/jsm/objects/Water2.js
+
 
 Anggota:
 
