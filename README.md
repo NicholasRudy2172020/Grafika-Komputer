@@ -1,7 +1,7 @@
 # Grafika-Komputer
 Tugas Besar Grafika Komputer Semester 5 - Kelompok 3
 
-Small Requirement: GSAP
+Requirements: ThreeJS & GSAP
 
 Modified Water2 object dapat ditemukan di branch Prototype-2172020 (node_modules/three/examples/jsm/objects/ (Folder water & Water2.js))
 
